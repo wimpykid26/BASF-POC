@@ -10,9 +10,11 @@
     "karma-ci": "karma start karma-ci.conf.js",
     "watch": "npm run karma",
     "test": "npm run lint && rimraf coverage && npm run karma-ci",
-    "build": "rimraf dist && ui5 build --a"
+    "build": "rimraf dist && ui5 build --a",
+    "proxy": "node proxy.js"
   },
   "devDependencies": {
+    "cors-anywhere": "^0.4.1",
     "@ui5/cli": "^1.0.0",
     "eslint": "^4.19.1",
     "karma": "^4.0.1",

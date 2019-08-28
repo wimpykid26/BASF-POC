@@ -7,7 +7,7 @@
 
 	<Page id="page" title="{i18n>title}">
 		<content>
-			<IconTabBar id="idTopLevelIconTabBar" class="sapUiResponsiveContentPadding" selectedKey="db">
+			<IconTabBar id="idTopLevelIconTabBar" selectedKey="db" class="sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter id="start" text="{i18n>gettingStartedFilter}">
 						<Carousel>

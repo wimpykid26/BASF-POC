@@ -1,6 +1,5 @@
-<mvc:View
-	displayBlock="true"
-	xmlns="sap.m"
+<mvc:View displayBlock="true" 
+	xmlns="sap.m" 
 	xmlns:mvc="sap.ui.core.mvc">
 	<Shell>
 		<App id="app"/>
