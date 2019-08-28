@@ -1,0 +1,67 @@
+<mvc:View controllerName="sap.ui.demo.basicTemplate.controller.Home" displayBlock="true" 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+
+	<Page id="page" title="{i18n>title}">
+		<content>
+			<IconTabBar id="idTopLevelIconTabBar" class="sapUiResponsiveContentPadding" selectedKey="db">
+				<items>
+					<IconTabFilter id="start" text="{i18n>gettingStartedFilter}">
+						<Carousel>
+							<pages>
+								<image src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png"/>
+							</pages>
+							<pages>
+								<image src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png"/>
+							</pages>
+						</Carousel>
+						<Button text="Say Hello" press="onShowHello"></Button>
+						<Input value="{helloPanel>/recipient/name}" description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="true" width="60%" />
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>dataBindingFilter}" key="db">
+						<content>
+							<List headerText="{i18n>productListTitle}" items="{/Products}">
+								<items>
+									<ObjectListItem title="{ProductName}" number="{UnitPrice}" intro="{ProductID}" />
+								</items>
+							</List>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter id="layouts" text="{i18n>layoutFilter}">
+						<MessageStrip type="Information" showIcon="true" text="Here's a Form Layout inside an Icon Tab Bar …"/>
+						<f:SimpleForm id="simpleFormChange" title="Address" editable="true" class="editableForm sapUiResponsiveContentPadding">
+							<f:content>
+								<Label text="{i18n>layoutFormName}"/>
+								<Input value="{address>/Name}"/>
+								<Label text="{i18n>layoutFormStreet}"/>
+								<Input value="{address>/Street}"/>
+								<Label text="{i18n>layoutFormHouseNumber}"/>
+								<Input value="{address>/HouseNumber}"/>
+								<Label text="{i18n>layoutFormZIPCode}"/>
+								<Input value="{address>/ZIPCode}"/>
+								<Label text="{i18n>layoutFormCity}"/>
+								<Input value="{address>/City}" />
+								<Label text="{i18n>layoutFormCountry}"/>
+								<Select>
+									<items>
+										<core:Item text="{i18n>layoutCountryGermany}"/>
+										<core:Item text="{i18n>layoutCountryUSA}"/>
+										<core:Item text="{i18n>layoutCountryEngland}"/>
+									</items>
+								</Select>
+							</f:content>
+						</f:SimpleForm>
+						<Toolbar>
+							<ToolbarSpacer/>
+							<Button text="{i18n>layoutPublishButton}" type="Accept"/>
+							<Button text="{i18n>layoutDraftButton}"/>
+						</Toolbar>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>
