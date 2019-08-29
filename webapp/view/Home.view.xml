@@ -19,13 +19,30 @@
 							</pages>
 						</Carousel>
 						<Button text="Say Hello" press="onShowHello"></Button>
-						<Input value="{helloPanel>/recipient/name}" description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="true" width="60%" />
+						<Input value="{ 
+							path: 'helloPanel>/recipient/name',
+							type: 'sap.ui.model.type.Float',
+							formatOptions : {
+								minFractionDigits : 2
+							},
+							constraints: {
+								maximum: 3000
+							}
+						}" description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="true" width="60%" />
 					</IconTabFilter>
 					<IconTabFilter text="{i18n>dataBindingFilter}" key="db">
 						<content>
 							<List headerText="{i18n>productListTitle}" items="{/Products}">
 								<items>
-									<ObjectListItem title="{ProductName}" number="{UnitPrice}" intro="{ProductID}" />
+									<ObjectListItem numberState="{= ${UnitPrice} > 40 ? 'Error' : 'Success'}" title="{ProductName}" number="{UnitPrice}" intro="{ProductID}">
+										<firstStatus>
+											<ObjectStatus text="{
+														parts : [
+														{path: 'UnitsInStock'}
+														], formatter : '.formatter.delivery'
+													}" />
+										</firstStatus>
+									</ObjectListItem>
 								</items>
 							</List>
 						</content>
