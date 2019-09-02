@@ -32,9 +32,16 @@
 					</IconTabFilter>
 					<IconTabFilter text="{i18n>dataBindingFilter}" key="db">
 						<content>
-							<List headerText="{i18n>productListTitle}" items="{/Products}">
+							<List id="productList" items="{/Products}" growing="true" growingThreshold="5" growingScrollToLoad="false" mode="None">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>productListTitle}" />
+										<ToolbarSpacer />
+										<SearchField width="50%" search="onFilterProducts"/>
+									</Toolbar>
+								</headerToolbar>
 								<items>
-									<ObjectListItem numberState="{= ${UnitPrice} > 40 ? 'Error' : 'Success'}" title="{ProductName}" number="{UnitPrice}" intro="{ProductID}">
+									<ObjectListItem numberState="{= ${UnitPrice} > 40 ? 'Error' : 'Success'}" title="{ProductName}" number="{UnitPrice}" intro="{ProductID}" press="onItemSelected" type="Active">
 										<firstStatus>
 											<ObjectStatus text="{
 														parts : [
@@ -45,6 +52,13 @@
 									</ObjectListItem>
 								</items>
 							</List>
+							<Panel id="productDetailsPanel" headerText="Product Details" visible="false">
+								<l:Grid>
+									<Text text="{i18n>productDetailPanelID}: {ProductID}"/>
+									<Text text="{i18n>productDetailPanelName}: {ProductName}"/>
+									<Text text="{i18n>productDetailPanelPrice}: {UnitPrice}"/>
+								</l:Grid>
+							</Panel>
 						</content>
 					</IconTabFilter>
 					<IconTabFilter id="layouts" text="{i18n>layoutFilter}">
